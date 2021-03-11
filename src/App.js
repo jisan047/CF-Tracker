@@ -12,7 +12,7 @@ function App() {
 
   const fetchData = (e) => {
     const userName = e.target.value;
-    const infoUrl = `http://codeforces.com/api/user.info?handles=${userName}`;
+    const infoUrl = `https://codeforces.com/api/user.info?handles=${userName}`;
     fetch(infoUrl)
       .then((response) => response.json())
       .then((result) => setUserInfo(result.result || []));
