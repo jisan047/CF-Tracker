@@ -59,8 +59,18 @@ h3{
 }
 
 .table{
+  width: 100%;
   padding: 10px;
   display: flex;
   justify-items: center;
   justify-content: space-between;
+  min-height: auto;
+}
+.table-pane{
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, .7), rgba(255, 255, 255, .1));
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 10px 20px #888888;
 }
