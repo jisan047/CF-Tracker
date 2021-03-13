@@ -6,6 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import moment from "moment";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import MaterialTable from "material-table";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { forwardRef } from "react";
 
 import AddBox from "@material-ui/icons/AddBox";
@@ -241,6 +242,7 @@ function App() {
         language: submission.programmingLanguage,
         executionTime: `${submission.timeConsumedMillis} ms`,
         memory: `${(submission.memoryConsumedBytes / 1024).toFixed(0)} kb`,
+        contestId: submission.problem.contestId,
       };
     });
     refinedData
@@ -271,6 +273,7 @@ function App() {
           executionTime: `${submission.timeConsumedMillis} ms`,
           memory: `${(submission.memoryConsumedBytes / 1024).toFixed(0)} kb`,
           verdict: submission.verdict,
+          contestId: submission.problem.contestId,
         });
       }
     });
@@ -341,6 +344,11 @@ function App() {
           <div className="table">
             <div className="table-pane">
               <MaterialTable
+                localization={{
+                  header: {
+                    actions: "",
+                  },
+                }}
                 icons={tableIcons}
                 isLoading={isLoading}
                 columns={[
@@ -381,8 +389,20 @@ function App() {
                   search: false,
                   filtering: true,
                   loadingType: "overlay",
+                  actionsColumnIndex: -1,
                 }}
                 style={{ width: "100%" }}
+                actionscolumnt
+                actions={[
+                  {
+                    icon: () => <ExitToAppIcon />,
+                    tooltip: "Go to problem",
+                    onClick: (event, rowData) =>
+                      window.open(
+                        `https://codeforces.com/contest/${rowData.contestId}/problem/${rowData.index}`
+                      ),
+                  },
+                ]}
               />
             </div>
           </div>
@@ -391,6 +411,11 @@ function App() {
           <div className="table">
             <div className="table-pane">
               <MaterialTable
+                localization={{
+                  header: {
+                    actions: "",
+                  },
+                }}
                 icons={tableIcons}
                 isLoading={isLoading}
                 columns={[
@@ -432,8 +457,19 @@ function App() {
                   search: false,
                   filtering: true,
                   loadingType: "overlay",
+                  actionsColumnIndex: -1,
                 }}
                 style={{ width: "100%" }}
+                actions={[
+                  {
+                    icon: () => <ExitToAppIcon />,
+                    tooltip: "Go to problem",
+                    onClick: (event, rowData) =>
+                      window.open(
+                        `https://codeforces.com/contest/${rowData.contestId}/problem/${rowData.index}`
+                      ),
+                  },
+                ]}
               />
             </div>
           </div>
